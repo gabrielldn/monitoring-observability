@@ -69,12 +69,13 @@ services:
       - logging=promtail
 
   loki:
-    image: grafana/loki:latest
+    image: grafana/loki:3.5.0
     container_name: loki
     ports:
       - 3100:3100
+    
     volumes:
-      - ./configs/loki-config.yml:/etc/loki/loki-config.yml
+      - ./configs/loki-config.yml:/etc/loki/local-config.yaml
     networks:
       - monitoring
     restart: on-failure
